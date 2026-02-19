@@ -1,0 +1,295 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace; /* Coding font */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #0d1117; /* Dark hacker background */
+    background-image: radial-gradient(circle at center, #1a1025 0%, #0d1117 100%);
+    padding: 20px;
+    color: #e6edf3;
+    overflow: hidden; /* Prevent scroll during popup */
+}
+
+.main-wrapper {
+    display: flex;
+    gap: 30px;
+    background-color: rgba(22, 27, 34, 0.8);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.2), inset 0 0 2px rgba(138, 43, 226, 0.5);
+    border: 1px solid #30363d;
+    backdrop-filter: blur(10px);
+    flex-wrap: wrap;
+    max-width: 800px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.panel {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #a371f7; /* Cursed energy purple */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(163, 113, 247, 0.5);
+}
+
+/* --- The Animation Track --- */
+.progress-track {
+    position: relative;
+    width: 100%;
+    height: 4px;
+    background-color: #30363d;
+    border-radius: 2px;
+    margin-bottom: 30px;
+}
+
+.glow-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background-color: #a371f7;
+    box-shadow: 0 0 10px #a371f7, 0 0 20px #a371f7;
+    transition: width 0.3s ease-out;
+    border-radius: 2px;
+}
+
+.runner {
+    position: absolute;
+    top: -28px;
+    left: 0%;
+    font-size: 28px;
+    transition: left 0.3s ease-out;
+    transform: translateX(-50%); /* Keeps him centered on his percentage */
+    filter: drop-shadow(0 0 5px rgba(163, 113, 247, 0.8));
+    z-index: 10;
+}
+
+/* Little bounce animation when moving */
+.running-anim {
+    animation: bounce 0.3s infinite alternate;
+}
+
+@keyframes bounce {
+    0% { transform: translateX(-50%) translateY(0); }
+    100% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* --- Form Styles --- */
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #8b949e;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    background-color: #010409;
+    border: 1px solid #30363d;
+    color: #58a6ff;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #a371f7;
+    box-shadow: 0 0 15px rgba(163, 113, 247, 0.3);
+}
+
+.error-message {
+    color: #ff7b72;
+    font-size: 13px;
+    margin-bottom: 10px;
+    text-align: center;
+    min-height: 15px;
+    text-shadow: 0 0 5px rgba(255, 123, 114, 0.5);
+}
+
+/* --- Button Styles --- */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.primary-btn {
+    background-color: transparent;
+    border: 1px solid #a371f7;
+    color: #a371f7;
+    box-shadow: inset 0 0 10px rgba(163, 113, 247, 0.2);
+}
+
+.primary-btn:hover {
+    background-color: #a371f7;
+    color: #0d1117;
+    box-shadow: 0 0 20px rgba(163, 113, 247, 0.6);
+}
+
+/* --- Game Styles --- */
+.game-container {
+    border-left: 2px dashed #30363d;
+    padding-left: 30px;
+}
+
+.game-subtitle {
+    text-align: center;
+    color: #8b949e;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.game-status {
+    text-align: center;
+    font-weight: bold;
+    color: #58a6ff;
+    margin-bottom: 15px;
+    height: 20px;
+    text-shadow: 0 0 5px rgba(88, 166, 255, 0.5);
+}
+
+.tic-tac-toe-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    background-color: #a371f7; /* Glowing borders */
+    padding: 2px;
+    border-radius: 8px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 250px;
+    box-shadow: 0 0 15px rgba(163, 113, 247, 0.4);
+}
+
+.cell {
+    background-color: #0d1117;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.cell:hover {
+    background-color: #161b22;
+}
+
+.cell.x { color: #58a6ff; text-shadow: 0 0 10px #58a6ff; }
+.cell.o { color: #ff7b72; text-shadow: 0 0 10px #ff7b72; }
+
+.secondary-btn {
+    background-color: transparent;
+    border: 1px solid #8b949e;
+    color: #8b949e;
+    margin-top: 15px;
+}
+.secondary-btn:hover {
+    background-color: #21262d;
+    color: #e6edf3;
+}
+
+/* ========================================= */
+/* WELCOME POP-UP ANIMATION                  */
+/* ========================================= */
+.welcome-popup {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: rgba(13, 17, 23, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.welcome-popup.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.popup-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.giant-character {
+    font-size: 120px;
+    opacity: 0;
+    transform: translateY(100px) scale(0.5);
+    filter: drop-shadow(0 0 30px #a371f7);
+}
+
+.welcome-popup.show .giant-character {
+    animation: epicJump 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes epicJump {
+    0% { opacity: 0; transform: translateY(150px) scale(0.1); }
+    50% { opacity: 1; transform: translateY(-50px) scale(1.2); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.popup-content h1 {
+    color: #e6edf3;
+    font-size: 3rem;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.popup-content .subtitle {
+    color: #a371f7;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    opacity: 0;
+    letter-spacing: 5px;
+}
+
+.welcome-popup.show h1 {
+    animation: slideUpFade 0.5s ease forwards 0.8s;
+}
+
+.welcome-popup.show .subtitle {
+    animation: slideUpFade 0.5s ease forwards 1s;
+}
+
+@keyframes slideUpFade {
+    to { opacity: 1; transform: translateY(0); }
+}

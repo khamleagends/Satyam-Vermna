@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorcerer Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-wrapper" id="mainWrapper">
+        
+        <div class="panel login-container">
+            <h2>System Gateway</h2>
+            
+            <div class="progress-track">
+                <div id="runner" class="runner">🥷</div>
+                <div class="glow-bar" id="glowBar"></div>
+            </div>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">User ID (admin)</label>
+                    <input type="text" id="username" name="username" autocomplete="off" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Passcode (password123)</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div id="errorMessage" class="error-message"></div>
+                
+                <button type="submit" class="primary-btn">Initialize</button>
+            </form>
+        </div>
+
+        <div class="panel game-container">
+            <h2>Idle State</h2>
+            <p class="game-subtitle">Defeat the AI while you wait.</p>
+            
+            <div id="gameStatus" class="game-status">Your turn (X)</div>
+            
+            <div class="tic-tac-toe-board" id="board">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
+            </div>
+
+            <button id="resetGameBtn" class="secondary-btn">Reset Grid</button>
+        </div>
+    </div>
+
+    <div id="welcomePopup" class="welcome-popup hidden">
+        <div class="popup-content">
+            <div class="giant-character">🥷</div>
+            <h1 id="welcomeText" class="glitch" data-text="Welcome, Admin">Welcome, Admin</h1>
+            <p class="subtitle">Domain Expansion: Dashboard...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
