@@ -69,8 +69,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             window.location.href = 'buggy1.html'; 
             
             // For demo purposes, we'll just reset the page so you can see it again
-            alert("This is where it redirects to your dashboard!");
-            location.reload(); 
+            
         }, 3000);
 
     } else {
@@ -167,4 +166,5 @@ resetBtn.addEventListener('click', () => {
         cell.classList.remove('x', 'o');
     });
 });
+
 
