@@ -66,7 +66,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         // 3. Redirect to dashboard after the animation finishes (3 seconds)
         setTimeout(() => {
             // Replace with your actual redirect URL
-            // window.location.href = 'buggy1.html'; 
+            window.location.href = 'buggy1.html'; 
             
             // For demo purposes, we'll just reset the page so you can see it again
             alert("This is where it redirects to your dashboard!");
@@ -167,3 +167,4 @@ resetBtn.addEventListener('click', () => {
         cell.classList.remove('x', 'o');
     });
 });
+
